@@ -2,7 +2,16 @@ import React from 'react'
 import useSWR from 'swr'
 
 function App() {
-  const { data, error } = useSWR('https://api.github.com/repos/vercel/swr')
+  const { data, error } = useSWR(
+    'https://api.github.com/repos/vercel/swr',
+    () => ({
+      name: 'swr',
+      description: 'React Hooks library for remote data fetching',
+      subscribers_count: 192,
+      stargazers_count: 15353,
+      forks_count: 515
+    })
+  )
 
   if (error) return <>{'An error has occurred.'}</>
   if (!data) return <>{'Loading...'}</>
